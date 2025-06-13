@@ -2,7 +2,7 @@
 
 A full-stack travel and tourism web application built with React frontend and Django backend, featuring destination browsing, user authentication, bookings, and a favorites system.
 
-## 🌟 Features
+##  Features
 
 - **User Authentication**: Login, registration, and JWT-based authentication
 - **Destination Management**: Browse, search, and filter travel destinations
@@ -12,7 +12,7 @@ A full-stack travel and tourism web application built with React frontend and Dj
 - **Responsive Design**: Modern, mobile-friendly UI with Tailwind CSS
 - **Real-time Updates**: Dynamic favorites and booking status updates
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **React** - User interface library
@@ -28,7 +28,7 @@ A full-stack travel and tourism web application built with React frontend and Dj
 - **JWT** - Authentication tokens
 - **Pillow** - Image processing
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Travel_Tourism_new/
@@ -50,7 +50,7 @@ Travel_Tourism_new/
     └── requirements.txt
 ```
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -124,7 +124,7 @@ The backend will be running at `http://localhost:8000`
 
 The frontend will be running at `http://localhost:3000`
 
-## 🔧 Environment Variables
+##  Environment Variables
 
 ### Backend (.env)
 ```env
@@ -140,7 +140,7 @@ REACT_APP_ENVIRONMENT=development
 REACT_APP_DEBUG=true
 ```
 
-## 📚 API Endpoints
+##  API Endpoints
 
 ### Authentication
 - `POST /api/auth/register/` - User registration
@@ -163,7 +163,7 @@ REACT_APP_DEBUG=true
 - `POST /api/bookings/` - Create new booking
 - `GET /api/bookings/{id}/` - Get booking details
 
-## 🎨 Key Features Implementation
+##  Key Features Implementation
 
 ### Favorites System
 - Real-time favorite toggling on destination cards
@@ -181,42 +181,3 @@ REACT_APP_DEBUG=true
 - Mobile-first approach with Tailwind CSS
 - Smooth animations with Framer Motion
 - Modern UI components and layouts
-
-## 🚀 Deployment
-
-### Backend Deployment
-1. Set environment variables for production
-2. Use PostgreSQL or MySQL for production database
-3. Configure static files and media handling
-4. Set up proper CORS settings
-
-### Frontend Deployment
-1. Build the production version: `npm run build`
-2. Deploy to static hosting (Netlify, Vercel, etc.)
-3. Update API URLs for production
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🐛 Known Issues
-
-- Image uploads need proper media handling for production
-- Email notifications not implemented
-- Payment gateway integration pending
-
-## 📞 Support
-
-If you have any questions or need help, please open an issue on GitHub.
-
----
-
-Made with ❤️ by [Your Name]
