@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    @apply bg-gray-50 text-gray-900;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+  }
+  
+  .btn-outline {
+    @apply btn bg-white text-gray-700 border-gray-300 hover:bg-gray-50 focus:ring-primary-500;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-900 shadow-none;
+  }
+  
+  .input {
+    @apply appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-12 lg:py-16;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full h-6 w-6 border-b-2 border-primary-600;
+  }
+  
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Loading animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* React Datepicker custom styles */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  @apply input;
+}
+
+/* Toast container positioning */
+.Toaster {
+  z-index: 9999;
+}
+
+/* Hero section input field enhancements */
+.hero-input {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border: 2px solid #e5e7eb !important;
+}
+
+.hero-input::placeholder {
+  color: #6b7280 !important;
+  opacity: 0.8 !important;
+}
+
+.hero-input:focus {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.hero-input:hover {
+  border-color: #d1d5db !important;
+}
+
+/* Date input specific styling */
+input[type="date"].hero-input {
+  color: #1f2937 !important;
+  cursor: pointer;
+}
+
+input[type="date"].hero-input::-webkit-calendar-picker-indicator {
+  color: #6b7280;
+  cursor: pointer;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Contact Form Animations and Styles */
+@keyframes shake {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-3px);
+  }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Enhanced focus states for contact form */
+.contact-input:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating label animation */
+.floating-label {
+  position: relative;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.875);
+  color: #3b82f6;
+}
+
+.floating-label label {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  background: white;
+  padding: 0 0.25rem;
+}
+
+/* Professional gradient backgrounds */
+.contact-gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.contact-success-gradient {
+  background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+}
+
+.contact-error-gradient {
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+}
+
+/* Form validation states */
+.form-valid {
+  border-color: #10b981 !important;
+  background-color: #f0fdf4 !important;
+}
+
+.form-invalid {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.contact-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Smooth transitions for better UX */
+.contact-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Professional status message styling */
+.status-message {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* FAQ hover effects */
+.faq-card {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.faq-card:hover {
+  border-color: #e5e7eb;
+  transform: translateY(-2px);
+}
