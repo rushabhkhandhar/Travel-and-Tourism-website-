@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { bookingsAPI } from '../services/api';
 import { 
   CalendarDaysIcon, 
@@ -150,10 +151,10 @@ const BookingDetails = () => {
     try {
       await bookingsAPI.cancelBooking(booking.id || booking.booking_id);
       setBooking(prev => ({ ...prev, status: 'cancelled' }));
-      alert('Booking cancelled successfully');
+      toast.success('Booking cancelled successfully');
     } catch (err) {
       console.error('Error cancelling booking:', err);
-      alert('Failed to cancel booking: ' + err.message);
+      toast.error('Failed to cancel booking: ' + err.message);
     }
   };
 

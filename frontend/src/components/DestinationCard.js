@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useAuth } from './Auth/AuthContext';
 import BookingForm from './BookingForm';
 import { 
@@ -65,14 +66,14 @@ const DestinationCard = ({ destination, isLiked = false, onToggleFavorite }) => 
     } else {
       // Fallback to copying URL
       navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
+      toast.success('Link copied to clipboard!');
     }
   };
 
   const handleBookNow = (e) => {
     e.stopPropagation();
     if (!user) {
-      alert('Please log in to book a destination');
+      toast.error('Please log in to book a destination');
       // You might want to redirect to login page
       return;
     }
@@ -82,7 +83,7 @@ const DestinationCard = ({ destination, isLiked = false, onToggleFavorite }) => 
   const handleBookingSuccess = (booking) => {
     console.log('Booking successful:', booking);
     setShowBookingForm(false);
-    alert('Booking confirmed! Check your email for details.');
+    toast.success('Booking confirmed! Check your email for details.');
   };
 
   const handleCloseBookingForm = () => {

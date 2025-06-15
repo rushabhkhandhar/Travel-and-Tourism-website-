@@ -184,19 +184,24 @@ const BookingForm = ({ destination, onBookingSuccess, onClose }) => {
     setError('');
 
     try {
-      // Prepare booking data for Django backend with total_price
+      // Prepare booking data for Django backend with correct field names
       const bookingPayload = {
-        destination_id: destination.id,
-        departure_date: bookingData.departure_date,
-        return_date: bookingData.return_date,
+        destination: destination.id,
+        start_date: bookingData.departure_date,
+        end_date: bookingData.return_date,
         number_of_travelers: parseInt(bookingData.number_of_travelers),
-        total_price: totalPrice, // Add calculated total price
-        emergency_contact_name: bookingData.emergency_contact_name,
-        emergency_contact_phone: bookingData.emergency_contact_phone,
-        emergency_contact_email: bookingData.emergency_contact_email,
-        special_requests: bookingData.special_requests,
-        dietary_requirements: bookingData.dietary_requirements,
-        travelers: bookingData.travelers
+        primary_contact_name: bookingData.emergency_contact_name,
+        primary_contact_phone: bookingData.emergency_contact_phone,
+        primary_contact_email: bookingData.emergency_contact_email,
+        special_requirements: bookingData.special_requests,
+        dietary_restrictions: bookingData.dietary_requirements,
+        travelers: bookingData.travelers.map(traveler => ({
+          first_name: traveler.first_name,
+          last_name: traveler.last_name,
+          date_of_birth: traveler.date_of_birth,
+          passport_number: traveler.passport_number || '',
+          nationality: traveler.nationality
+        }))
       };
 
       console.log('Submitting booking:', bookingPayload);

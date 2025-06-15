@@ -52,5 +52,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'first_name', 'last_name', 'phone_number', 
-                 'date_of_birth', 'profile_picture', 'bio', 'date_joined')
-        read_only_fields = ('id', 'username', 'date_joined')
+                 'date_of_birth', 'profile_picture', 'profile_picture_url', 'bio', 
+                 'address', 'city', 'country', 'postal_code', 'date_joined')
+        read_only_fields = ('id', 'username', 'email', 'date_joined')
+        
+    def update(self, instance, validated_data):
+        # Only update fields that are provided
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance

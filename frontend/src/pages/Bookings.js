@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { 
   CalendarIcon, 
   ClockIcon, 
@@ -55,8 +56,9 @@ const Bookings = () => {
       setCancelReason('');
       setSelectedBooking(null);
       loadBookings(); // Refresh bookings
+      toast.success('Booking cancelled successfully');
     } catch (error) {
-      alert('Failed to cancel booking. Please try again.');
+      toast.error('Failed to cancel booking. Please try again.');
       console.error('Failed to cancel booking:', error);
     }
   };

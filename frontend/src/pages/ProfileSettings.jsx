@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 import { useAuth } from '../components/Auth/AuthContext';
 import {
   UserIcon,
@@ -10,15 +11,13 @@ import {
   CameraIcon,
   PencilIcon,
   CheckIcon,
-  XMarkIcon,
-  ExclamationTriangleIcon
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 
 const ProfileSettings = () => {
   const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState({ type: '', text: '' });
   const [profileData, setProfileData] = useState({
     first_name: '',
     last_name: '',
@@ -61,30 +60,16 @@ const ProfileSettings = () => {
 
   const handleSave = async () => {
     setLoading(true);
-    setMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('http://localhost:8000/api/auth/profile/', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        },
-        body: JSON.stringify(profileData)
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        await updateUser(data);
-        setMessage({ type: 'success', text: 'Profile updated successfully!' });
+      const result = await updateUser(profileData);
+      if (result.success) {
+        toast.success('Profile updated successfully!');
         setIsEditing(false);
-      } else {
-        setMessage({ type: 'error', text: data.message || 'Failed to update profile' });
       }
     } catch (error) {
       console.error('Error updating profile:', error);
-      setMessage({ type: 'error', text: 'An error occurred. Please try again.' });
+      toast.error(error.message || 'An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -107,7 +92,6 @@ const ProfileSettings = () => {
       });
     }
     setIsEditing(false);
-    setMessage({ type: '', text: '' });
   };
 
   const getInitials = (firstName, lastName) => {
@@ -183,23 +167,6 @@ const ProfileSettings = () => {
               </div>
             </div>
           </div>
-
-          {/* Message */}
-          {message.text && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`p-4 mx-8 mt-6 rounded-xl flex items-center space-x-3 ${
-                message.type === 'success' 
-                  ? 'bg-green-50 text-green-800 border border-green-200' 
-                  : 'bg-red-50 text-red-800 border border-red-200'
-              }`}
-            >
-              {message.type === 'error' && <ExclamationTriangleIcon className="w-5 h-5" />}
-              {message.type === 'success' && <CheckIcon className="w-5 h-5" />}
-              <span>{message.text}</span>
-            </motion.div>
-          )}
 
           {/* Profile Form */}
           <div className="p-8">

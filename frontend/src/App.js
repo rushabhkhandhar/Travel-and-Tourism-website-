@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './components/Auth/AuthContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './styles/toastify-custom.css';
 
 // Import all pages and components
 import Navbar from './components/Navbar';
@@ -13,7 +16,6 @@ import Contact from './pages/Contact';
 import Favorites from './pages/Favorites';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import ApiTest from './components/ApiTest';
 import MyBookings from './pages/MyBookings';
 import BookingDetails from './pages/BookingDetails';
 import ProfileSettings from './pages/ProfileSettings';
@@ -40,12 +42,28 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/api-test" element={<ApiTest />} />
             <Route path="/my-bookings" element={<MyBookings />} />
             <Route path="/booking-details/:bookingId" element={<BookingDetails />} />
             <Route path="/profile" element={<ProfileSettings />} />
           </Routes>
           <Footer />
+          <ToastContainer
+            position="top-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            limit={3}
+            toastStyle={{
+              fontSize: '14px',
+              fontWeight: '500'
+            }}
+          />
         </div>
       </Router>
     </AuthProvider>

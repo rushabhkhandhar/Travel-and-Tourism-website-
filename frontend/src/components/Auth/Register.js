@@ -94,9 +94,9 @@ const Register = () => {
         username: `${formData.firstName}${formData.lastName}`.toLowerCase().replace(/\s+/g, ''),
         email: formData.email,
         password: formData.password,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        phone: formData.phone
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        password_confirm: formData.confirmPassword
       });
       
       // Success - redirect to login or dashboard

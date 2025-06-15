@@ -145,12 +145,12 @@ class CustomLoginView(APIView):
             print(f"User is_active: {user.is_active}")
             print(f"Password provided: {password}")
             
-            # Try authenticating with username (Django's default)
-            authenticated_user = authenticate(username=user.username, password=password)
+            # Try authenticating with email (since USERNAME_FIELD is 'email')
+            authenticated_user = authenticate(username=email, password=password)
             print(f"Authentication result: {authenticated_user}")
             
             if authenticated_user is None:
-                # Try direct password check
+                # Try direct password check as fallback
                 print("Authentication failed, trying manual password check...")
                 if user.check_password(password):
                     print("Manual password check PASSED")

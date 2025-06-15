@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { toastMessages } from '../utils/toastUtils';
 import { 
   ArrowLeftIcon,
   StarIcon,
@@ -135,9 +136,10 @@ const DestinationDetail = () => {
       // Fallback
       try {
         await navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
+        toastMessages.success.linkCopied();
       } catch (error) {
         console.error('Could not copy link:', error);
+        toastMessages.error.linkCopyFailed();
       }
     }
   };
@@ -610,7 +612,7 @@ const DestinationDetail = () => {
               </button>
               <button
                 onClick={() => {
-                  alert('Thank you for your interest! We will contact you soon.');
+                  toastMessages.success.contactSubmitted();
                   setShowBookingModal(false);
                 }}
                 className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
@@ -629,7 +631,7 @@ const DestinationDetail = () => {
           onBookingSuccess={(booking) => {
             console.log('Booking successful:', booking);
             setShowBookingModal(false);
-            alert('Booking confirmed! Check your email for details.');
+            toastMessages.success.bookingConfirmed();
             // Optionally redirect to My Bookings
             // navigate('/my-bookings');
           }}
