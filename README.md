@@ -225,8 +225,11 @@ After cloning the repository, make sure to:
 3. ✅ **Sample Data Added** - Run `python add_sample_data.py` (CRITICAL STEP)
 4. ✅ **Frontend Dependencies** - Run `npm install` in frontend directory
 5. ✅ **Both Servers Running** - Backend on :8000, Frontend on :3000
+6. ✅ **Clear Browser Data** - Use incognito mode or clear localStorage to avoid cached login data
 
 **⚠️ Without sample data, the application will appear empty with no destinations to browse!**
+
+**💡 Tip**: Use incognito/private browsing mode for a completely fresh experience without cached authentication data.
 
 ##  Environment Variables
 
@@ -286,14 +289,44 @@ REACT_APP_ENVIRONMENT=development
    - **Cause**: User not authenticated or invalid data
    - **Solution**: Make sure you're logged in and provide valid profile data
 
+7. **Pre-existing Account Logged In After Fresh Clone**
+   - **Cause**: Browser localStorage contains old authentication tokens
+   - **Solution**: Clear browser localStorage or use incognito/private mode
+   - **Steps**: 
+     1. Open browser Developer Tools (F12)
+     2. Go to Application/Storage tab
+     3. Clear Local Storage for localhost:3000
+     4. Refresh the page
+
 ### Database Reset (if needed)
-If you need to start fresh:
+If you need to start fresh with a clean database:
 ```bash
 cd travel_backend
-rm db.sqlite3
-python manage.py migrate
-python add_sample_data.py
+rm db.sqlite3  # Remove existing database
+python manage.py migrate  # Create fresh database
+python add_sample_data.py  # Add sample data
 ```
+
+### Clear Browser Authentication Data
+If you see a pre-existing account after cloning:
+
+**Option 1: Use Development Utility (Easiest)**
+```javascript
+// Open browser console (F12) and run:
+clearAuthData()  // This function is available in development mode
+```
+
+**Option 2: Manual Clearing**
+```javascript
+// Open browser console (F12) and run:
+localStorage.removeItem('access_token');
+localStorage.removeItem('refresh_token'); 
+localStorage.removeItem('user');
+location.reload(); // Refresh the page
+```
+
+**Option 3: Use Incognito Mode**
+Simply use incognito/private browsing mode for testing.
 
 ##  API Endpoints
 

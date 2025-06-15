@@ -49,6 +49,20 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('user');
       }
     }
+
+    // Development utility: Add global function to clear auth data
+    if (process.env.NODE_ENV === 'development') {
+      window.clearAuthData = () => {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        localStorage.removeItem('user');
+        setUser(null);
+        setIsAuthenticated(false);
+        console.log('✅ Authentication data cleared');
+        window.location.reload();
+      };
+      console.log('🔧 Development mode: Use clearAuthData() to clear login data');
+    }
   }, []);
 
   const login = async (credentials) => {
