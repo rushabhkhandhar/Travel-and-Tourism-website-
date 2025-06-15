@@ -4,7 +4,7 @@ A full-stack travel and tourism web application built with React frontend and Dj
 
 ##  Quick Start
 
-### Option 1: Automated Setup (Recommended)
+### Option 1: Automated Setup 
 
 **For Mac/Linux:**
 ```bash
