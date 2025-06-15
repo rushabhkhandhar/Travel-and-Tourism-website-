@@ -20,8 +20,8 @@ chmod +x setup.sh
 **For Windows:**
 ```cmd
 # 1. Clone the repository
-git clone <repository-url>
-cd Travel_Tourism_new
+git clone https://github.com/rushabhkhandhar/Travel-and-Tourism-website-.git
+cd Travel-and-Tourism-website-
 
 # 2. Run the setup script
 setup.bat
@@ -45,7 +45,7 @@ npm start
 ```bash
 # 1. Clone the repository
 git clone https://github.com/rushabhkhandhar/Travel-and-Tourism-website-.git
-cd Travel_Tourism_new
+cd Travel-and-Tourism-website-
 
 # 2. Backend Setup
 cd travel_backend
