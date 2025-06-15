@@ -2,6 +2,83 @@
 
 A full-stack travel and tourism web application built with React frontend and Django backend, featuring destination browsing, user authentication, bookings, and a favorites system.
 
+##  Quick Start
+
+### Option 1: Automated Setup (Recommended)
+
+**For Mac/Linux:**
+```bash
+# 1. Clone the repository
+git clone https://github.com/rushabhkhandhar/Travel-and-Tourism-website-.git
+cd Travel_Tourism_new
+
+# 2. Run the setup script
+chmod +x setup.sh
+./setup.sh
+```
+
+**For Windows:**
+```cmd
+# 1. Clone the repository
+git clone <repository-url>
+cd Travel_Tourism_new
+
+# 2. Run the setup script
+setup.bat
+```
+
+**After setup, start the servers:**
+```bash
+# Terminal 1 - Backend:
+cd travel_backend
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+python manage.py runserver
+
+# Terminal 2 - Frontend:
+cd frontend
+npm start
+
+# Open http://localhost:3000 in your browser
+```
+
+### Option 2: Manual Setup
+```bash
+# 1. Clone the repository
+git clone https://github.com/rushabhkhandhar/Travel-and-Tourism-website-.git
+cd Travel_Tourism_new
+
+# 2. Backend Setup
+cd travel_backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python add_sample_data.py  # ⚠️ IMPORTANT: Don't skip this step!
+python manage.py runserver
+
+# 3. Frontend Setup (in a new terminal)
+cd frontend
+npm install
+npm start
+
+# 4. Open http://localhost:3000 in your browser
+```
+
+**⚠️ Critical Step**: Don't forget to run `python add_sample_data.py` or the application will be empty!
+
+## 📱 What You'll See After Setup
+
+After successful setup and running both servers, you should see:
+
+1. **Home Page** - Featured destinations carousel with Bali, Santorini, Tokyo, and Paris
+2. **Destinations Page** - Grid of available destinations with filtering by category  
+3. **Authentication** - Working login/register functionality
+4. **Bookings** - Ability to book trips and view booking history
+5. **Profile** - User profile management with update capabilities
+6. **Responsive Design** - Modern UI that works on desktop and mobile
+
+If you see an empty page or no destinations, make sure you ran the `add_sample_data.py` script!
+
 ##  Features
 
 - **User Authentication**: Login, registration, and JWT-based authentication
@@ -32,20 +109,23 @@ A full-stack travel and tourism web application built with React frontend and Dj
 
 ```
 Travel_Tourism_new/
-├── frontend/                   # React frontend application
-│   ├── public/                # Static files
+├── setup.sh                   # Setup script for Mac/Linux
+├── setup.bat                  # Setup script for Windows
+├── frontend/                  # React frontend application
+│   ├── public/               # Static files
 │   ├── src/
-│   │   ├── components/        # Reusable components
-│   │   ├── pages/            # Page components
-│   │   └── services/         # API services
+│   │   ├── components/       # Reusable components
+│   │   ├── pages/           # Page components
+│   │   └── services/        # API services
 │   ├── package.json
 │   └── tailwind.config.js
-└── travel_backend/            # Django backend application
-    ├── destinations/          # Destinations app
-    ├── bookings/             # Bookings app
-    ├── favorites/            # Favorites app
-    ├── reviews/              # Reviews app
-    ├── users/                # Users app
+└── travel_backend/           # Django backend application
+    ├── add_sample_data.py    # Script to populate database with sample data
+    ├── destinations/         # Destinations app
+    ├── bookings/            # Bookings app
+    ├── favorites/           # Favorites app
+    ├── reviews/             # Reviews app
+    ├── users/               # Users app
     ├── manage.py
     └── requirements.txt
 ```
@@ -75,21 +155,36 @@ Travel_Tourism_new/
    pip install -r requirements.txt
    ```
 
-4. **Environment Setup**:
-   ```bash
-   cp .env.example .env
-   # Edit .env file with your configuration
-   ```
-
-5. **Run migrations**:
+4. **Run migrations**:
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-6. **Create superuser** (optional):
+5. **Create superuser** (optional):
    ```bash
    python manage.py createsuperuser
+   ```
+
+6. **⚠️  IMPORTANT: Add Sample Data**:
+   The database is empty by default. Run the sample data script to populate it with destinations:
+   ```bash
+   python add_sample_data.py
+   ```
+   This will create:
+   - **5 Categories**: Beach, Adventure, Cultural, City, Nature
+   - **4 Featured Destinations**: 
+     - Bali Paradise Getaway (Indonesia) - Beach destination
+     - Santorini Sunset Romance (Greece) - Beach destination  
+     - Tokyo Modern Culture (Japan) - City destination
+     - Paris Cultural Heritage (France) - Cultural destination
+   - All necessary data for the frontend to work properly
+   
+   **Sample Data Output**: You should see messages like:
+   ```
+   ✅ Created category: Beach
+   ✅ Created destination: Bali Paradise Getaway
+   🎉 Sample data creation completed!
    ```
 
 7. **Start development server**:
@@ -111,33 +206,85 @@ The backend will be running at `http://localhost:8000`
    npm install
    ```
 
-3. **Environment Setup**:
-   ```bash
-   cp .env.example .env
-   # Edit .env file with your configuration
-   ```
-
-4. **Start development server**:
+3. **Start development server**:
    ```bash
    npm start
    ```
 
 The frontend will be running at `http://localhost:3000`
 
+## 🚨 **First-Time Setup Checklist**
+
+After cloning the repository, make sure to:
+
+1. ✅ **Backend Setup Complete** - Follow all backend setup steps above
+2. ✅ **Migrations Applied** - Run `python manage.py migrate`
+3. ✅ **Sample Data Added** - Run `python add_sample_data.py` (CRITICAL STEP)
+4. ✅ **Frontend Dependencies** - Run `npm install` in frontend directory
+5. ✅ **Both Servers Running** - Backend on :8000, Frontend on :3000
+
+**⚠️ Without sample data, the application will appear empty with no destinations to browse!**
+
 ##  Environment Variables
 
-### Backend (.env)
+### Backend
+The backend is configured to work out of the box with default settings. No .env file is required for basic functionality.
+
+Optional environment variables:
 ```env
 SECRET_KEY=your-secret-key-here
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 ```
 
-### Frontend (.env)
+### Frontend
+The frontend is configured to connect to the local backend automatically. No .env file is required for basic functionality.
+
+Optional environment variables:
 ```env
 REACT_APP_API_BASE_URL=http://localhost:8000/api
 REACT_APP_ENVIRONMENT=development
-REACT_APP_DEBUG=true
+```
+
+##  Troubleshooting
+
+### Common Issues
+
+1. **Empty Application / No Destinations Showing**
+   - **Cause**: Sample data not loaded
+   - **Solution**: Run `python add_sample_data.py` in the travel_backend directory
+
+2. **Backend Not Starting**
+   - **Cause**: Missing dependencies or database not set up
+   - **Solution**: 
+     ```bash
+     pip install -r requirements.txt
+     python manage.py migrate
+     ```
+
+3. **Frontend Not Connecting to Backend**
+   - **Cause**: Backend not running or wrong URL
+   - **Solution**: Ensure backend is running on http://localhost:8000
+
+4. **Authentication Issues**
+   - **Cause**: Database not migrated or corrupted
+   - **Solution**: 
+     ```bash
+     python manage.py migrate
+     python add_sample_data.py
+     ```
+
+5. **Profile Update Errors**
+   - **Cause**: User not authenticated or invalid data
+   - **Solution**: Make sure you're logged in and provide valid profile data
+
+### Database Reset (if needed)
+If you need to start fresh:
+```bash
+cd travel_backend
+rm db.sqlite3
+python manage.py migrate
+python add_sample_data.py
 ```
 
 ##  API Endpoints
