@@ -29,7 +29,7 @@ for cat_data in categories_data:
 destinations_data = [
     {
         'name': 'Bali Paradise Getaway',
-        'description': 'Experience the magic of Bali with pristine beaches, ancient temples, and vibrant culture.',
+        'long_description': 'Experience the magic of Bali with pristine beaches, ancient temples, and vibrant culture.',
         'short_description': 'Tropical paradise with stunning beaches and rich culture.',
         'country': 'Indonesia',
         'city': 'Bali',
@@ -38,10 +38,11 @@ destinations_data = [
         'duration_days': 7,
         'difficulty': 'easy',
         'is_featured': True,
+        'best_time_to_visit': 'April to October'
     },
     {
         'name': 'Santorini Sunset Romance',
-        'description': 'Discover the breathtaking beauty of Santorini with its iconic white buildings and blue domes.',
+        'long_description': 'Discover the breathtaking beauty of Santorini with its iconic white buildings and blue domes.',
         'short_description': 'Beautiful Greek island with white buildings and stunning sunsets.',
         'country': 'Greece',
         'city': 'Santorini',
@@ -50,10 +51,11 @@ destinations_data = [
         'duration_days': 5,
         'difficulty': 'easy',
         'is_featured': True,
+        'best_time_to_visit': 'May to September'
     },
     {
         'name': 'Tokyo Modern Culture',
-        'description': 'Immerse yourself in the fascinating contrast of ultra-modern Tokyo and traditional Japanese culture.',
+        'long_description': 'Immerse yourself in the fascinating contrast of ultra-modern Tokyo and traditional Japanese culture.',
         'short_description': 'Modern metropolis with rich culture and amazing food.',
         'country': 'Japan',
         'city': 'Tokyo',
@@ -62,10 +64,11 @@ destinations_data = [
         'duration_days': 8,
         'difficulty': 'moderate',
         'is_featured': True,
+        'best_time_to_visit': 'March to May, September to November'
     },
     {
         'name': 'Paris Cultural Heritage',
-        'description': 'Explore the City of Light with visits to world-famous museums and historic monuments.',
+        'long_description': 'Explore the City of Light with visits to world-famous museums and historic monuments.',
         'short_description': 'Romantic city with world-class art and architecture.',
         'country': 'France',
         'city': 'Paris',
@@ -74,6 +77,33 @@ destinations_data = [
         'duration_days': 6,
         'difficulty': 'easy',
         'is_featured': True,
+        'best_time_to_visit': 'April to June, September to October'
+    },
+    {
+        'name': 'Swiss Alps Adventure',
+        'long_description': 'Challenge yourself with hiking, skiing, and mountaineering in the stunning Swiss Alps.',
+        'short_description': 'Adventure sports and breathtaking mountain views.',
+        'country': 'Switzerland',
+        'city': 'Zermatt',
+        'category_name': 'Adventure',
+        'price_per_person': 2199.00,
+        'duration_days': 10,
+        'difficulty': 'challenging',
+        'is_featured': True,
+        'best_time_to_visit': 'December to March, June to September'
+    },
+    {
+        'name': 'Yellowstone Wildlife Safari',
+        'long_description': 'Explore Americas first national park with its geysers, hot springs, and abundant wildlife.',
+        'short_description': 'Natural wonders and wildlife in iconic national park.',
+        'country': 'United States',
+        'city': 'Yellowstone',
+        'category_name': 'Nature',
+        'price_per_person': 1799.00,
+        'duration_days': 7,
+        'difficulty': 'moderate',
+        'is_featured': False,
+        'best_time_to_visit': 'April to May, September to October'
     },
 ]
 

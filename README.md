@@ -10,7 +10,7 @@ A full-stack travel and tourism web application built with React frontend and Dj
 ```bash
 # 1. Clone the repository
 git clone https://github.com/rushabhkhandhar/Travel-and-Tourism-website-.git
-cd Travel_Tourism_new
+cd Travel-and-Tourism-website-
 
 # 2. Run the setup script
 chmod +x setup.sh
@@ -70,8 +70,8 @@ npm start
 
 After successful setup and running both servers, you should see:
 
-1. **Home Page** - Featured destinations carousel with Bali, Santorini, Tokyo, and Paris
-2. **Destinations Page** - Grid of available destinations with filtering by category  
+1. **Home Page** - Featured destinations carousel with Bali, Santorini, Tokyo, Paris, and Swiss Alps
+2. **Destinations Page** - Grid of 6 destinations with filtering by category (Beach, City, Cultural, Adventure, Nature)
 3. **Authentication** - Working login/register functionality
 4. **Bookings** - Ability to book trips and view booking history
 5. **Profile** - User profile management with update capabilities
@@ -173,18 +173,21 @@ Travel_Tourism_new/
    ```
    This will create:
    - **5 Categories**: Beach, Adventure, Cultural, City, Nature
-   - **4 Featured Destinations**: 
+   - **6 Destinations**: 
      - Bali Paradise Getaway (Indonesia) - Beach destination
      - Santorini Sunset Romance (Greece) - Beach destination  
      - Tokyo Modern Culture (Japan) - City destination
      - Paris Cultural Heritage (France) - Cultural destination
+     - Swiss Alps Adventure (Switzerland) - Adventure destination
+     - Yellowstone Wildlife Safari (USA) - Nature destination
    - All necessary data for the frontend to work properly
    
    **Sample Data Output**: You should see messages like:
    ```
-   ✅ Created category: Beach
-   ✅ Created destination: Bali Paradise Getaway
+   Creating categories...
+   Creating destinations...
    🎉 Sample data creation completed!
+   🚀 Your Django backend is ready!
    ```
 
 7. **Start development server**:
@@ -254,7 +257,12 @@ REACT_APP_ENVIRONMENT=development
    - **Cause**: Sample data not loaded
    - **Solution**: Run `python add_sample_data.py` in the travel_backend directory
 
-2. **Backend Not Starting**
+2. **FieldError: Invalid field name(s) for model Destination**
+   - **Cause**: Outdated sample data script with incorrect field names
+   - **Solution**: Make sure you have the latest version of `add_sample_data.py`
+   - **Error Example**: `django.core.exceptions.FieldError: Invalid field name(s) for model Destination: 'description'`
+
+3. **Backend Not Starting**
    - **Cause**: Missing dependencies or database not set up
    - **Solution**: 
      ```bash
@@ -262,11 +270,11 @@ REACT_APP_ENVIRONMENT=development
      python manage.py migrate
      ```
 
-3. **Frontend Not Connecting to Backend**
+4. **Frontend Not Connecting to Backend**
    - **Cause**: Backend not running or wrong URL
    - **Solution**: Ensure backend is running on http://localhost:8000
 
-4. **Authentication Issues**
+5. **Authentication Issues**
    - **Cause**: Database not migrated or corrupted
    - **Solution**: 
      ```bash
@@ -274,7 +282,7 @@ REACT_APP_ENVIRONMENT=development
      python add_sample_data.py
      ```
 
-5. **Profile Update Errors**
+6. **Profile Update Errors**
    - **Cause**: User not authenticated or invalid data
    - **Solution**: Make sure you're logged in and provide valid profile data
 
